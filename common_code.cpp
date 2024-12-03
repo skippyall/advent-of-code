@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include <bits/stdc++.h>
+#include <sstream>
 
 #include "common_code_header.hpp"
 
