@@ -5,12 +5,10 @@
 #include <string>
 #include <vector>
 
-using namespace std;
+std::vector<std::string> split(std::basic_istream<char> &input, char delimiter);
 
-vector<string> split(basic_istream<char> &input, char delimiter);
+std::vector<std::string> splitString(std::string input, char delimiter);
 
-vector<string> splitString(string input, char delimiter);
-
-vector<string> linesOfFile(string path);
+std::vector<std::string> linesOfFile(std::string path);
 
 #endif

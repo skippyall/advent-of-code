@@ -31,7 +31,7 @@ int parseFirst(std::string current, int &index) {
             return stoi(number1) * stoi(number2);
         }
     }
-    return false;
+    return 0;
 }
 
 int main() {
@@ -40,18 +40,35 @@ int main() {
     std::vector<std::string> lines = linesOfFile(path);
 
     int total = 0;
+    bool enabled = true;
 
     for(std::string line : lines) {
         std::string current = line;
         while (current != ""){
-            int index = current.find("mul(");
-            if(index != current.npos) {
-                total += parseFirst(current, index);
-                current = current.substr(index, current.size() - 1);
+            if(enabled) {
+                int disableIndex = current.find("don't()");
+                int index = current.find("mul(");
+                
+                if(disableIndex < index && disableIndex != std::string::npos) {
+                    enabled = false;
+                    current = current.substr(disableIndex + 7, current.size() - 1);
+                } else {
+                    if(index != current.npos) {
+                        total += parseFirst(current, index);
+                        current = current.substr(index, current.size() - 1);
+                    } else {
+                        current = "";
+                    }
+                }
             } else {
-                current = "";
+                int enableIndex = current.find("do()");
+                if(enableIndex != current.npos) {
+                    enabled = true;
+                    current = current.substr(enableIndex + 4, current.size() - 1);
+                } else {
+                    current = "";
+                }
             }
-
         }
     }
 
