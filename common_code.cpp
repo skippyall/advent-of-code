@@ -31,3 +31,8 @@ vector<string> linesOfFile(string path) {
     }
     return vector<string>();
 }
+
+point::point(int x, int y) {
+    this->x = x;
+    this->y = y;
+}

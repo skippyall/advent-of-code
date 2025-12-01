@@ -11,4 +11,11 @@ std::vector<std::string> splitString(std::string input, char delimiter);
 
 std::vector<std::string> linesOfFile(std::string path);
 
+class point {
+    public:
+        int x;
+        int y;
+        point(int x, int y);
+};
+
 #endif
